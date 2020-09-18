@@ -33,8 +33,8 @@ public class Constants {
 
     public static final String URL = "URL";
     public static final String DEF_IP = "http://192.168.0.104:10101/";//http://client.d7v28.cn/
-//    public static final String BASE_URL ="http://192.168.0.104:10101/"; //HttpLoader.getBase_url();
-    public static final String BASE_URL ="https://gw.jq62.com/";
+    public static final String BASE_URL ="http://192.168.0.104:10101/micro/"; //HttpLoader.getBase_url();
+//    public static final String BASE_URL ="https://gw.jq62.com/";
     public static final String LOGIN = BASE_URL + "api/dashboard/app/v1/login";
     public static final String GET_OTP = BASE_URL+"api/dashboard/app/v1/code/sms";
     public static final String SUBMIT_USER_MEG = BASE_URL+"api/dashboard/app/user/v1/save";
@@ -53,14 +53,14 @@ public class Constants {
 
 
 
-    /*-------------------------  url end ---------------------------*/
+    /*-------------------------  url end ------------------------------*/
 
-    /*-------------------------  请求码 begin ---------------------------*/
-
+    /*-------------------------  请求码 begin -------------------------*/
 
     /*-------------------------  请求码 end ---------------------------*/
 
     /*-------------------------  参数 begin ---------------------------*/
+
     public static final String APP_VERSION = "appVersion";
     public static final String DOMAIN="PandaLoan";
     public static final String CLIENT_USER_SESSION = "token";

@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.india.loanshop.R;
 import com.india.loanshop.base.BaseFragment;
@@ -63,6 +64,7 @@ public class HomeFragment2 extends BaseFragment {
     private ListView listView;
     private List<OrderData> listDataList = new ArrayList<OrderData>();
     DownloadCircleDialog dialogProgress;
+    TextView tvLoanName,tvLoanMoney;
 
     @Override
     protected int setContentViewLayout() {
@@ -73,6 +75,8 @@ public class HomeFragment2 extends BaseFragment {
     protected void initView(View view, Bundle savedInstanceState) {
         btnApply=view.findViewById(R.id.home_apply_btn);
         listView = (ListView) getActivity().findViewById(R.id.find_listView);
+        tvLoanName=view.findViewById(R.id.tv_home_loan_name);
+        tvLoanMoney=view .findViewById(R.id.tv_home_loan_money);
     }
 
     @Override
@@ -167,30 +171,44 @@ public class HomeFragment2 extends BaseFragment {
                             JSONObject objectData =object.getJSONObject("data");
                             JSONArray jsonArray=objectData.getJSONArray("list");
                             int lenth=objectData.getInt("total");
-                            for (int i = 0; i < 2; i++) {// 最后一个不显示
-                                String UserIcon=jsonArray.getJSONObject(i).getString("productLogo");
-                                String UserName=jsonArray.getJSONObject(i).getString("productName");
-                                String UserQuota= jsonArray.getJSONObject(i).getString("maxAmount");
-                                String UserInterest=jsonArray.getJSONObject(i).getString("showRate")+"%";
-                                String UserTime=jsonArray.getJSONObject(i).getString("maxPeriod");
-                                String UserStage=jsonArray.getJSONObject(i).getString("isQuota");
-                                String IntentUrl=jsonArray.getJSONObject(i).getString("linkAddress");
-                                String ProductID=jsonArray.getJSONObject(i).getString("id");
-                                if(UserStage.equals("0")){
-                                    UserStage="Unlimited";
-                                }else if(UserStage.equals("1")){
-                                    UserStage="Quota";
+                            if(lenth==0){
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        mLoadingPager.showContent();
+                                    }
+                                });
+                            }else{
+                                if(lenth>=2){
+                                    lenth=2;
                                 }
-                                OrderData data = new OrderData(UserIcon,UserName,UserQuota,UserInterest,UserTime,UserStage,IntentUrl,ProductID);
-                                listDataList.add(data);
+                                for (int i = 0; i < lenth; i++) {// 最后一个不显示
+                                    String UserIcon=jsonArray.getJSONObject(i).getString("productLogo");
+                                    String UserName=jsonArray.getJSONObject(i).getString("productName");
+                                    String UserQuota= jsonArray.getJSONObject(i).getString("maxAmount");
+                                    String UserInterest=jsonArray.getJSONObject(i).getString("showRate")+"%";
+                                    String UserTime=jsonArray.getJSONObject(i).getString("maxPeriod");
+                                    String UserStage=jsonArray.getJSONObject(i).getString("isQuota");
+                                    String IntentUrl=jsonArray.getJSONObject(i).getString("linkAddress");
+                                    String ProductID=jsonArray.getJSONObject(i).getString("id");
+                                    if(UserStage.equals("0")){
+                                        UserStage="Unlimited";
+                                    }else if(UserStage.equals("1")){
+                                        UserStage="Quota";
+                                    }
+                                    OrderData data = new OrderData(UserIcon,UserName,UserQuota,UserInterest,UserTime,UserStage,IntentUrl,ProductID);
+                                    listDataList.add(data);
+                                }
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        initListData();
+                                        mLoadingPager.showContent();
+                                    }
+                                });
                             }
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    initListData();
-                                    mLoadingPager.showContent();
-                                }
-                            });
+
+
                         }else{
                             MyToast.show(getActivity(), "Network exception, please try again later.");
                         }
@@ -223,7 +241,7 @@ public class HomeFragment2 extends BaseFragment {
         super.onHiddenChanged(hidden);
         if (hidden) {// 不在最前端界面显示
         } else {// 重新显示到最前端中
-            initData();
+//            initData();
         }
 
     }

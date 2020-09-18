@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PandaLoan</string>
+    <string name="app_name">MicroLoan</string>
     <string name="tab_home">Home</string>
     <string name="tab_message">Verification</string>
     <string name="tab_me">Me</string>
