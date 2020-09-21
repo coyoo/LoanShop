@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.india.loanshop">
+    package="com.india.microloan">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission
         android:name="android.permission.INTERACT_ACROSS_USERS_FULL"
@@ -17,7 +16,7 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
-        android:name="com.india.loanshop.base.MyApplication"
+        android:name="com.india.microloan.base.MyApplication"
         android:allowBackup="true"
         android:appComponentFactory="zvsd"
         android:icon="@mipmap/logo"
@@ -35,7 +34,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.india.loanshop.provider"
+            android:authorities="com.india.microloan.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -43,12 +42,12 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name="com.india.loanshop.ui.activity.MessageBoardActivity" />
-        <activity android:name="com.india.loanshop.ui.activity.WebActivity" />
-        <activity android:name="com.india.loanshop.ui.activity.WebDownloadActivity" />
-        <activity android:name="com.india.loanshop.ui.activity.LoginActivity" />
-        <activity android:name="com.india.loanshop.ui.activity.MainActivity" />
-        <activity android:name="com.india.loanshop.ui.activity.WelcomeActivity">
+        <activity android:name="com.india.microloan.ui.activity.MessageBoardActivity" />
+        <activity android:name="com.india.microloan.ui.activity.WebActivity" />
+        <activity android:name="com.india.microloan.ui.activity.WebDownloadActivity" />
+        <activity android:name="com.india.microloan.ui.activity.LoginActivity" />
+        <activity android:name="com.india.microloan.ui.activity.MainActivity" />
+        <activity android:name="com.india.microloan.ui.activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

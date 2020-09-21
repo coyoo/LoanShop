@@ -9,7 +9,7 @@
     android:layout_height="245dp"
     >
 
-    <com.india.loanshop.ui.view.DownloadCircleView
+    <com.india.microloan.ui.view.DownloadCircleView
         android:id="@+id/circle_view"
         android:layout_width="245dp"
         android:layout_height="245dp"

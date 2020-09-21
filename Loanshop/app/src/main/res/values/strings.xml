@@ -34,12 +34,11 @@
     <string name="home_cash_name">Cash Name</string>
     <string name="home_btn">Get it Now</string>
     <string name="home_item_name">Palaupay</string>
-    <string name="home_item_pay_type">Hot</string>
+    <string name="home_item_pay_type">Download</string>
     <string name="home_item_quota">quota</string>
     <string name="home_item_interest">interest</string>
     <string name="home_item_time">time</string>
     <string name="home_item_stage">stage</string>
-
 
 
     <!--Verification页-->
